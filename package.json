@@ -1,17 +1,31 @@
 {
   "name": "updatetest",
-  "version": "1.0.0",
+  "version": "4.0.0",
   "description": "test for update",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"electron ."
+    "start": "electron .",
+    "package": "electron-builder -p always"
+  },
+  "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Sai-venkata-pavan-kumar",
+        "repo": "testUpdate"
+      }
+    ]
   },
   "keywords": [],
   "author": "pavan",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "electron": "^26.2.1",
+    "electron-builder": "^24.6.4"
+  },
+  "dependencies": {
+    "builder": "^5.0.0",
     "electron-updater": "^6.1.4",
     "update-electron-app": "^2.0.1"
   }

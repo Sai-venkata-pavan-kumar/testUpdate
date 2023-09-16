@@ -21,16 +21,18 @@ app.on('ready',()=>{
 })
 setInterval(()=>{
     autoUpdater.checkForUpdates();
-})
+},20000)
 autoUpdater.on('checking-for-update',()=>{
     win.webContents.send('status','checking for updates')
 })
-autoUpdater.on('update-available',()=>{
+autoUpdater.once('update-available',()=>{
     win.webContents.send('status','update available')
+    autoUpdater.downloadUpdate();
 })
-autoUpdater.on('download-progress',()=>{
-    win.webContents.send('status','download is in progress')
+autoUpdater.on('download-progress',(progress)=>{
+    win.webContents.send('downloading','download is in progress',progress.percent)
 })
 autoUpdater.on('update-downloaded',()=>{
     win.webContents.send('status','update downloaded')
+    autoUpdater.quitAndInstall()
 })

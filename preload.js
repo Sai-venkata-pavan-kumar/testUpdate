@@ -5,3 +5,7 @@ ipcRenderer.on('status',(e,data)=>{
     text+=data+"\n";
     div.innerText=text;
 })
+ipcRenderer.on('downloading',(e,text1,progress)=>{
+    text+=text1+progress+"\n";
+    div.innerText=text
+})
